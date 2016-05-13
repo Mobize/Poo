@@ -2,7 +2,8 @@
 class Jdc extends Model {
 
 	private $id;
-	private $name;
+	private $author;
+    private $title;
 	private $content;
 	private $picture;
 	private $creation_date;
@@ -11,8 +12,11 @@ class Jdc extends Model {
     public function getId() {
         return $this->id;
     }
-    public function getName() {
-        return ucfirst($this->name);
+    public function getAuthor() {
+        return ucfirst($this->author);
+    }
+    public function getTitle() {
+        return ucfirst($this->title);
     }
     public function getContent() {
         return nl2br($this->content);
@@ -28,8 +32,11 @@ class Jdc extends Model {
 	public function setId($id) {
         $this->id = $id;
     }
-    public function setName($name) {
-        $this->name = $name;
+    public function setAuthor($author) {
+        return ucfirst($this->author);
+    }
+    public function setTitle($title) {
+        return ucfirst($this->title);
     }
     public function setContent($content) {
         $this->content = $content;
@@ -47,5 +54,6 @@ class Jdc extends Model {
         foreach($properties as $key => $value) {
             echo ucfirst($key).' : '.$value.'<br>';
         }
+        echo '<hr>';
     }
 }

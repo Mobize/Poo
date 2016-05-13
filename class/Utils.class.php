@@ -2,7 +2,7 @@
 class Utils {
 
 	public static function debug($array) {
-		return '<pre>'.print_r($array, true).'</pre>';
+		echo '<pre>'.print_r($array, true).'</pre>';
 	}
 
 	/*

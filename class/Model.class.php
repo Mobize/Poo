@@ -25,6 +25,38 @@ class Model {
 		}
 	}
 
+	public function getProperties() {
+		$class = new ReflectionClass($this);
+		$properties = $class->getProperties(ReflectionProperty::IS_PROTECTED);
+		$vars = array();
+		foreach ($properties as $property) {
+		    $vars[$property->getName()] = '';
+		}
+		return $vars;
+	}
+
+	public static function getList($sql, $bindings = array()) {
+		return self::_getList(Db::select($sql, $bindings));
+	}
+
+	public static function get($sql, $bindings = array()) {
+		$entity = self::getClass();
+		return new $entity(Db::selectOne($sql, $bindings));
+	}
+
+	private static function _getList($result) {
+		$entity = self::getClass();
+		$items = array();
+		foreach($result as $item) {
+			$items[] = new $entity($item);
+		}
+		return $items;
+	}
+
+	public static function getClass() {
+		return ucfirst(get_called_class());
+	}
+
 	public function __isset($key) {
 		return property_exists($this, $key);
 	}
