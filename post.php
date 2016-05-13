@@ -12,6 +12,11 @@ try {
 
 	Utils::debug($post);
 
+	// Afficher les différentes informations en utilisant les getters
+	echo '<h1>'.$post->getTitle().'</h1>';
+	echo '<h3><em>By '.$post->getAuthor().'</em></h3>';
+	echo '<blockquote>'.$post->getContent().'</blockquote>';
+
 } catch(Exception $e) {
 	echo $e->getMessage();
 }
