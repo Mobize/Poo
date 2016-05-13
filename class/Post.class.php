@@ -91,13 +91,17 @@ class Post extends Model {
 	}
 
 	public function save() {
+
 		$vars = array(
-			':lastname' => $lastname,
-			':firstname' => $firstname,
-			':email' => $email,
-			':newsletter' => $newsletter,
-			':message' => $message,
+			'id' => $this->id,
+			'author' => $this->author,
+			'title' => $this->title,
+			'content' => $this->content,
+			'picture' => $this->picture,
+			'rating' => $this->rating,
+			'status' => $this->status
 		);
-		return Db::insert('INSERT INTO contact SET lastname = :lastname, firstname = :firstname, email = :email, newsletter = :newsletter, message = :message, date = NOW()', $vars);
+
+		return Db::insert('INSERT INTO post SET id = :id, author = :author, title = :title, content = :content, picture = :picture, rating = :rating, status = :status, creation_date = NOW()', $vars);
 	}
 }
