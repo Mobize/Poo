@@ -49,7 +49,7 @@ class Post extends Model {
 		return $this->status;
 	}
 	public function getCreationDate($format = 'd-m-Y') {
-		return date('d-m-Y', strtotime($this->creation_date));
+		return date($format, strtotime($this->creation_date));
 	}
 
 	/* Setters */
